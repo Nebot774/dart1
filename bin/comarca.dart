@@ -27,7 +27,7 @@ class Comarca {
 
   //constructor que inicializa una comarca a partir de un objeto JSON
   Comarca.fromJSON(Map<String, dynamic> json)
-    : nombre=json['nombre'],
+    : nombre = json['nombre'] ?? 'Nombre predeterminado',
       capital=json['capital'],
       poblacion=json['poblacion'],
       img=json['img'],

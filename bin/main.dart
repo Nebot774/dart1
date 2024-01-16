@@ -1,7 +1,7 @@
 import 'package:args/args.dart';
 //importamos las otras dos clases
 import 'api_service.dart';
-import 'comarca.dart'
+import 'comarca.dart';
 
 const String version = '0.0.1';
 
@@ -11,7 +11,8 @@ void main(List<String> args) async {
     // Verificamos que se han pasado los argumentos suficientes
     if (args.length >= 2) {
       var comando = args[0];
-      var nombre = args[1];
+      // Unimos todos los argumentos a partir del segundo (índice 1)
+      var nombre = args.sublist(1).join(' ');
 
       if (comando == 'comarques') {
         // Manejamos el comando 'comarques'
@@ -20,7 +21,7 @@ void main(List<String> args) async {
         print(comarcas);
       } else if (comando == 'infocomarca') {
         // Maneja el comando 'infocomarca'
-        var infoComarcaJson = await getInfoComarca(nombre);
+        var infoComarcaJson = await getInfoComarcas(nombre);
         var comarca = Comarca.fromJSON(infoComarcaJson);
         print(comarca.toString());
       } else {
